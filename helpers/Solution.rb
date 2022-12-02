@@ -1,3 +1,5 @@
+require_relative "./utils"
+
 class Solution
   attr_accessor :input
 
