@@ -2,4 +2,4 @@
 
 This is my proposed solution for the AdventOfCode 2022
 
-I've chose to work with Ruby :diamonds: for this edition!
+I've chosen to work with Ruby :diamonds: for this edition!
