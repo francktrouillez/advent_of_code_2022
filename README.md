@@ -1,1 +1,3 @@
-# advent_of_code_2022
+# AdventOfCode 2022
+
+This is my proposed solution for the AdventOfCode 2022
