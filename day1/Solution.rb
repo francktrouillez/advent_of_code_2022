@@ -1,10 +1,6 @@
 require_relative "../helpers/Solution"
 
 module Day1
-  def self.input_file
-    "#{underscore(self.to_s)}/input.txt"
-  end
-
   class Solution < ::Solution
     def generate_output_1
       compute.max

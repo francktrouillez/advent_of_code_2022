@@ -1,15 +1,31 @@
 require_relative "./utils"
 
 class Solution
-  attr_accessor :input
+  attr_accessor :input, :day
 
-  def initialize(filename)
-    self.input = File.readlines(filename).map(&:strip)
+  def initialize(day)
+    self.day = day
+    self.input = File.readlines("day#{day}/input.txt").map(&:strip)
   end
 
   def print_output
-    puts "Output 1 : #{generate_output_1.to_s}"
-    puts "Output 2 : #{generate_output_2.to_s}"
+    puts output
+  end
+
+  def write_output
+    File.write("day#{self.day}/output.txt", output)
+  end
+
+  def output
+    "Output 1 : #{output_1.to_s}\nOutput 2 : #{output_2.to_s}"
+  end
+
+  def output_1
+    @output_1 ||= generate_output_1
+  end
+
+  def output_2
+    @output_2 ||= generate_output_2
   end
 
   def generate_output_1
