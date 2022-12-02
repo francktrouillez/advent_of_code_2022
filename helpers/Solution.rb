@@ -3,9 +3,8 @@ require_relative "./utils"
 class Solution
   attr_accessor :input, :day
 
-  def initialize(day)
-    self.day = day
-    self.input = File.readlines("day#{day}/input.txt").map(&:strip)
+  def initialize
+    self.input = File.readlines("input.txt").map(&:strip)
   end
 
   def print_output
@@ -13,7 +12,7 @@ class Solution
   end
 
   def write_output
-    File.write("day#{self.day}/output.txt", output)
+    File.write("output.txt", output)
   end
 
   def output
