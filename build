@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+day="${1:0-1}"
+
+[ -d "$1" ] && exit
+
+mkdir -p $1
+cp -ar ./template/* ./$1/
+
+# Solution
+echo "require_relative \"../helpers/Solution\"
+
+module Day$day" | cat - ./$1/Solution.rb > /tmp/out && mv /tmp/out ./$1/Solution.rb
+
+# solve
+echo "require_relative \"./Solution\"
+
+DAY = $day
+" | cat - ./$1/solve.rb > /tmp/out && mv /tmp/out ./$1/solve.rb
