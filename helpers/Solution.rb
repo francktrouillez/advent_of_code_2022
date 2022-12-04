@@ -3,8 +3,8 @@ require_relative "./utils"
 class Solution
   attr_accessor :input, :day
 
-  def initialize
-    self.input = File.readlines("input.txt").map(&:strip)
+  def initialize(test: false)
+    self.input = File.readlines(test ? "test/input.txt" : "input.txt").map(&:strip)
   end
 
   def print_output
