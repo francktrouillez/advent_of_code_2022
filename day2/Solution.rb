@@ -16,7 +16,7 @@ module Day02
     def generate_output_2
       input.reduce(0) do |acc, input_line|
         opponent, outcome = input_line.split
-        acc + score(opponent, get_move(opponent, outcome))
+        acc + score(opponent, move(opponent, outcome))
       end
     end
   end

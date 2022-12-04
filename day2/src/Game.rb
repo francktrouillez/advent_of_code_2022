@@ -10,7 +10,7 @@ module Game
     player_choice + 1 + 3 * ((player_choice - opponent_choice + 1) % 3)
   end
 
-  def get_move(opponent, outcome)
+  def move(opponent, outcome)
     opponent_choice = OPPONENT_CHOICES.index(opponent)
     outcome_choice = OUTCOME_CHOICES.index(outcome)
 
