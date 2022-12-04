@@ -10,13 +10,50 @@ day="$(printf "%02d\n" $raw_day)"
 mkdir -p $1
 cp -ar ./template/* ./$1/
 
-# Solution
+# Solution.rb
 echo "require_relative \"../helpers/Solution\"
 
-module Day$day" | cat - ./$1/Solution.rb > /tmp/out && mv /tmp/out ./$1/Solution.rb
+module Day$day
+  class Solution < ::Solution
+    def generate_output_1
+      # TODO
+      \"\"
+    end
+
+    def generate_output_2
+      # TODO
+      \"\"
+    end
+  end
+end
+" > ./$1/Solution.rb
 
 # solve
 echo "require_relative \"./Solution\"
 
 DAY = \"$day\"
-" | cat - ./$1/solve.rb > /tmp/out && mv /tmp/out ./$1/solve.rb
+
+puts \"==============\"
+puts \"=== Day #{DAY} ===\"
+puts \"==============\"
+puts
+
+puts \"## Testing ##\"
+test_solution = Object.const_get(\"Day#{DAY}::Solution\").new(test: true)
+puts \"- Expected -\"
+expected_output = File.readlines(\"test/output.txt\").map(&:strip).join(\"\n\")
+puts expected_output
+puts \"-- Actual --\"
+test_solution.print_output
+puts \"-- Assert --\"
+test_ok = expected_output == test_solution.output
+puts test_ok ? \"   - OK -   \" : \" - NOT OK - \"
+puts \"#############\"
+exit unless test_ok
+puts
+puts \"# Processing #\"
+solution = Object.const_get(\"Day#{DAY}::Solution\").new
+solution.print_output
+solution.write_output
+puts \"##############\"
+" > ./$1/solve.rb
