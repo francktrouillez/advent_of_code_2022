@@ -46,7 +46,7 @@ puts expected_output
 puts \"-- Actual --\"
 test_solution.print_output
 puts \"-- Assert --\"
-test_ok = expected_output == test_solution.output
+test_ok = expected_output == test_solution.output.strip
 puts test_ok ? \"   - OK -   \" : \" - NOT OK - \"
 puts \"#############\"
 exit unless test_ok
