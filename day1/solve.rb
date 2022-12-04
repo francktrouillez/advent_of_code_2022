@@ -1,10 +1,10 @@
 require_relative "./Solution"
 
-DAY = 1
+DAY = "01"
 
-puts "============="
+puts "=============="
 puts "=== Day #{DAY} ==="
-puts "============="
+puts "=============="
 puts
 
 puts "## Testing ##"

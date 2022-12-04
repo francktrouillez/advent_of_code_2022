@@ -2,7 +2,7 @@ require_relative "../helpers/Solution"
 
 require_relative "./src/Game"
 
-module Day2
+module Day02
   class Solution < ::Solution
     include Game
 

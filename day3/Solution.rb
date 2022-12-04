@@ -1,6 +1,6 @@
 require_relative "../helpers/Solution"
 
-module Day3
+module Day03
   class Solution < ::Solution
     def generate_output_1
       input.map { |i| i.split "" }.map { |r| priority r.each_slice(r.size / 2).inject(:&).first }.sum

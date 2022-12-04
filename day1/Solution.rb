@@ -1,6 +1,6 @@
 require_relative "../helpers/Solution"
 
-module Day1
+module Day01
   class Solution < ::Solution
     def generate_output_1
       compute.max

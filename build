@@ -2,7 +2,8 @@
 
 cd "$(dirname "$0")"
 
-day="${1:0-1}"
+raw_day="$(echo "$1" | grep -o '[0-9]\+')"
+day="$(printf "%02d\n" $raw_day)"
 
 [ -d "$1" ] && exit
 
@@ -17,5 +18,5 @@ module Day$day" | cat - ./$1/Solution.rb > /tmp/out && mv /tmp/out ./$1/Solution
 # solve
 echo "require_relative \"./Solution\"
 
-DAY = $day
+DAY = \"$day\"
 " | cat - ./$1/solve.rb > /tmp/out && mv /tmp/out ./$1/solve.rb
