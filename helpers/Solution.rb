@@ -4,7 +4,7 @@ class Solution
   attr_accessor :input
 
   def initialize(test: false)
-    self.input = File.readlines(test ? "test/input.txt" : "input.txt").map(&:strip)
+    self.input = File.readlines(test ? "test/input.txt" : "input.txt").map(&:chomp)
   end
 
   def print_output
