@@ -1,7 +1,7 @@
 require_relative "./utils"
 
 class Solution
-  attr_accessor :input, :day
+  attr_accessor :input
 
   def initialize(test: false)
     self.input = File.readlines(test ? "test/input.txt" : "input.txt").map(&:strip)
