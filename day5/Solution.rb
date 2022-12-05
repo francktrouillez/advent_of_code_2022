@@ -2,7 +2,7 @@ require_relative "../helpers/Solution"
 
 module Day05
   class Solution < ::Solution
-    NUMBERIC_REGEX = /[0-9]+/
+    NUMERIC_REGEX = /[0-9]+/
 
     def generate_output_1
       separator_index = input.index(&:empty?)
@@ -22,7 +22,7 @@ module Day05
 
       def generate_crates(input_crates)
         reset_crates
-        number_of_crates = input_crates[-1].scan(NUMBERIC_REGEX).size
+        number_of_crates = input_crates[-1].scan(NUMERIC_REGEX).size
         input_crates[...-1].reverse_each do |stack_line|
           number_of_crates.times do |i|
             crates[i] ||= []
@@ -39,7 +39,7 @@ module Day05
       end
 
       def translate_move(input_move)
-        move = input_move.split(" ").filter { |e| e.match? NUMBERIC_REGEX }.map(&:to_i)
+        move = input_move.split(" ").filter { |e| e.match? NUMERIC_REGEX }.map(&:to_i)
         [move.first] + move[1..].map { |e| e - 1 }
       end
 
