@@ -44,9 +44,10 @@ module Day07
     end
 
     def reset
-      @current_directory_path = []
       @tree = {}
       @sizes = {}
+      @current_directory = @tree
+      @current_directory_path = []
     end
   end
 end
