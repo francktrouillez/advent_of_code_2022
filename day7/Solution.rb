@@ -4,18 +4,23 @@ module Day07
   class Solution < ::Solution
     def generate_output_1
       generate_tree
-      @sizes["/"] = generate_size(@tree)
+      generate_size(@tree)
       @sizes.values.select { |s| s <= 100_000 }.sum
     end
 
     def generate_output_2
       generate_tree
-      @sizes["/"] = generate_size(@tree)
+      generate_size(@tree)
       @sizes.values.select { |s| @sizes["/"] <= 40_000_000 + s }.min
     end
 
     def generate_tree
-      reset
+      return if @tree
+
+      @tree = {}
+      @sizes = {}
+      @current_directory = {}
+      @current_directory_path = []
       input.reject { |i| i.start_with? /($ ls|dir)/ }.each do |i|
         next cd(i[2..].split.last) if i.start_with? "$ cd"
 
@@ -25,9 +30,9 @@ module Day07
     end
 
     def generate_size(subtree, path = "/")
-      subtree.reduce(0) do |acc, (k, v)|
+      @sizes[path] ||= subtree.reduce(0) do |acc, (k, v)|
         current_path = "#{path}#{k}/"
-        acc + (v.is_a?(Hash) ? (@sizes[current_path] ||= generate_size(v, current_path)) : v)
+        acc + (v.is_a?(Hash) ? generate_size(v, current_path) : v)
       end
     end
 
@@ -41,13 +46,6 @@ module Day07
         @current_directory_path.append(arg)
       end
       @current_directory = @current_directory_path.reduce(@tree) { |acc, dir| acc[dir] ||= {} }
-    end
-
-    def reset
-      @tree = {}
-      @sizes = {}
-      @current_directory = @tree
-      @current_directory_path = []
     end
   end
 end
