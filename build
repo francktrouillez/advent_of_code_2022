@@ -3,12 +3,12 @@
 cd "$(dirname "$0")"
 
 raw_day="$(echo "$1" | grep -o '[0-9]\+')"
-day="$(printf "%02d\n" $raw_day)"
+[[ ${#raw_day} -gt 1 ]] && day="$raw_day" || day="$(printf "%02d\n" $raw_day)"
 
-[ -d "$1" ] && exit
+[ -d "day$day" ] && exit
 
-mkdir -p $1
-cp -ar ./template/* ./$1/
+mkdir -p "day$day"
+cp -ar ./template/* "./day$day/"
 
 # Solution.rb
 echo "require_relative \"../helpers/Solution\"
@@ -26,7 +26,7 @@ module Day$day
     end
   end
 end
-" > ./$1/Solution.rb
+" > "./day$day/Solution.rb"
 
 # solve
 echo "require_relative \"./Solution\"
@@ -56,4 +56,4 @@ solution = Object.const_get(\"Day#{DAY}::Solution\").new
 solution.print_output
 solution.write_output
 puts \"##############\"
-" > ./$1/solve.rb
+" > "./day$day/solve.rb"

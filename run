@@ -2,6 +2,9 @@
 
 cd "$(dirname "$0")"
 
-cd $1
+raw_day="$(echo "$1" | grep -o '[0-9]\+')"
+[[ ${#raw_day} -gt 1 ]] && day="$raw_day" || day="$(printf "%02d\n" $raw_day)"
+
+cd "day$day"
 ruby solve.rb
 cd ..
