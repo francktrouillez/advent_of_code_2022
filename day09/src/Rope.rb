@@ -7,15 +7,13 @@ module Day09
     end
 
     def move(travel)
-      travel.map(&:abs).max.times do
-        @knots.first.map!.with_index { |v, i| v + (travel[i] <=> 0) }
-        @knots.each_cons(2) do |previous, current|
-          next if close_enough?(previous, current)
+      @knots.first.map!.with_index { |v, i| v + travel[i] }
+      @knots.each_cons(2) do |previous, current|
+        next if close_enough?(previous, current)
 
-          current.map!.with_index { |v, i| v + ((previous[i] - v) <=> 0) }
-        end
-        @markers[@knots.last.dup] = true
+        current.map!.with_index { |v, i| v + ((previous[i] - v) <=> 0) }
       end
+      @markers[@knots.last.dup] = true
     end
 
     private

@@ -26,18 +26,17 @@ module Day09
       def apply(instruction)
         action = instruction.split
         value = action.last.to_i
-        move = [0, 0]
-        case action.first
+        direction = case action.first
           when "U"
-            move[1] = value
+            [0, 1]
           when "D"
-            move[1] = -value
+            [0, -1]
           when "R"
-            move[0] = value
+            [1, 0]
           when "L"
-            move[0] = -value
+            [-1, 0]
         end
-        @rope.move(move)
+        value.times { @rope.move(direction) }
       end
   end
 end
