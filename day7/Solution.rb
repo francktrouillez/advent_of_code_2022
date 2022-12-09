@@ -14,39 +14,41 @@ module Day07
       @sizes.values.select { |s| @sizes["/"] <= 40_000_000 + s }.min
     end
 
-    def generate_tree
-      return if @tree
+    private
 
-      @tree = {}
-      @sizes = {}
-      @current_directory = {}
-      @current_directory_path = []
-      input.reject { |i| i.start_with? /($ ls|dir)/ }.each do |i|
-        next cd(i[2..].split.last) if i.start_with? "$ cd"
+      def generate_tree
+        return if @tree
 
-        file_size, file = i.split
-        @current_directory[file] = file_size.to_i
-      end
-    end
-
-    def generate_size(subtree, path = "/")
-      @sizes[path] ||= subtree.reduce(0) do |acc, (k, v)|
-        current_path = "#{path}#{k}/"
-        acc + (v.is_a?(Hash) ? generate_size(v, current_path) : v)
-      end
-    end
-
-    def cd(arg)
-      case arg
-      when "/"
+        @tree = {}
+        @sizes = {}
+        @current_directory = {}
         @current_directory_path = []
-      when ".."
-        @current_directory_path.pop
-      else
-        @current_directory_path.append(arg)
+        input.reject { |i| i.start_with? /($ ls|dir)/ }.each do |i|
+          next cd(i[2..].split.last) if i.start_with? "$ cd"
+
+          file_size, file = i.split
+          @current_directory[file] = file_size.to_i
+        end
       end
-      @current_directory = @current_directory_path.reduce(@tree) { |acc, dir| acc[dir] ||= {} }
-    end
+
+      def generate_size(subtree, path = "/")
+        @sizes[path] ||= subtree.reduce(0) do |acc, (k, v)|
+          current_path = "#{path}#{k}/"
+          acc + (v.is_a?(Hash) ? generate_size(v, current_path) : v)
+        end
+      end
+
+      def cd(arg)
+        case arg
+        when "/"
+          @current_directory_path = []
+        when ".."
+          @current_directory_path.pop
+        else
+          @current_directory_path.append(arg)
+        end
+        @current_directory = @current_directory_path.reduce(@tree) { |acc, dir| acc[dir] ||= {} }
+      end
   end
 end
 

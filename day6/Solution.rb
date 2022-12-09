@@ -10,9 +10,11 @@ module Day06
       start_of_packet 14
     end
 
-    def start_of_packet(size)
-      input.first.split("").each_cons(size).to_a.index { |e| e.uniq.length == size } + size
-    end
+    private
+
+      def start_of_packet(size)
+        input.first.split("").each_cons(size).to_a.index { |e| e.uniq.length == size } + size
+      end
   end
 end
 

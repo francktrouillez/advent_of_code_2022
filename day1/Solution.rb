@@ -10,8 +10,10 @@ module Day01
       calories.sort.reverse[...3].sum
     end
 
-    def calories
-      input.reduce([0]) { |acc, i| i.empty? ? acc + [0] : (acc[-1] += i.to_i) && acc }
-    end
+    private
+
+      def calories
+        input.reduce([0]) { |acc, i| i.empty? ? acc + [0] : (acc[-1] += i.to_i) && acc }
+      end
   end
 end

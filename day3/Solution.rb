@@ -11,6 +11,7 @@ module Day03
     end
 
     private
+
       def priority(item)
         item.ord - (/[[:upper:]]/.match?(item) ? "A".ord - 27: "a".ord - 1)
       end
