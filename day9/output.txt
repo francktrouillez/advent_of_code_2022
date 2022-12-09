@@ -1,0 +1,2 @@
+Output 1 : 6522
+Output 2 : 2717
