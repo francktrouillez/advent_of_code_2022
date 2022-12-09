@@ -1,6 +1,6 @@
 require_relative "../helpers/Solution"
 
-require_relative "./Tree"
+require_relative "./src/Tree"
 
 module Day08
   class Solution < ::Solution

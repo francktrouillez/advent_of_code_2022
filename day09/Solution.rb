@@ -1,6 +1,6 @@
 require_relative "../helpers/Solution"
 
-require_relative "./Rope"
+require_relative "./src/Rope"
 
 module Day09
   class Solution < ::Solution
