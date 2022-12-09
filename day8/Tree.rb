@@ -1,16 +1,15 @@
 module Day08
   class Tree
-    attr_accessor :x, :y, :z, :right, :left, :up, :down, :visible
+    attr_accessor :height, :visible, :views
 
-    def initialize(x, y, z)
-      @x = x
-      @y = y
-      @z = z
+    def initialize(height)
+      @height = height
       @visible = false
+      @views = []
     end
 
     def score
-      left * right * up * down
+      @views.inject(&:*)
     end
   end
 end
