@@ -1,2 +1,4 @@
-Output 1 : 24000
-Output 2 : 45000
+Output 1 :
+24000
+Output 2 :
+45000

@@ -14,7 +14,7 @@ class Solution
   end
 
   def output
-    "Output 1 : #{output_1.to_s}\nOutput 2 : #{output_2.to_s}"
+    "Output 1 :\n#{output_1.to_s}\nOutput 2 :\n#{output_2.to_s}"
   end
 
   def output_1

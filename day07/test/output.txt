@@ -1,2 +1,4 @@
-Output 1 : 95437
-Output 2 : 24933642
+Output 1 :
+95437
+Output 2 :
+24933642

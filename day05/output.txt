@@ -1,2 +1,4 @@
-Output 1 : FRDSQRRCD
-Output 2 : HRFTQVWNN
+Output 1 :
+FRDSQRRCD
+Output 2 :
+HRFTQVWNN
