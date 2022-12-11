@@ -10,7 +10,7 @@ puts
 puts "## Testing ##"
 test_solution = Object.const_get("Day#{DAY}::Solution").new(test: true)
 puts "- Expected -"
-expected_output = File.readlines("test/output.txt").map(&:strip).join("\n")
+expected_output = File.readlines("test/output.txt").map(&:strip).join("\n").strip
 puts expected_output
 puts "-- Actual --"
 test_solution.print_output
