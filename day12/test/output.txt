@@ -1,0 +1,4 @@
+Output 1 :
+31
+Output 2 :
+29

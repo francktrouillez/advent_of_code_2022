@@ -1,0 +1,4 @@
+Output 1 :
+420
+Output 2 :
+414
